@@ -2,6 +2,7 @@ package se.iths.rest;
 
 import se.iths.CustomException;
 import se.iths.entity.Student;
+import se.iths.entity.Subject;
 import se.iths.service.StudentService;
 
 import javax.inject.Inject;
@@ -32,48 +33,10 @@ public class StudentRest {
         }
     }
 
-    @Path("update/firstName/{id}")
+    @Path("")
     @PUT
-    public Response updateFirstName(@PathParam("id") Long id, @QueryParam("firstName") String firstName){
-        Student student = studentService.updateFirstName(id, firstName);
-        if(student == null){
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Student with id: "+ id + " could not be found")
-                    .type(MediaType.APPLICATION_JSON).build();
-        }
-        return Response.ok(student).build();
-    }
-    @Path("update/lastName/{id}")
-    @PUT
-    public Response updateLastName(@PathParam("id") Long id, @QueryParam("lastName") String lastName){
-        Student student = studentService.updateLastName(id, lastName);
-        if(student == null){
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Student with id: "+ id + " could not be found")
-                    .type(MediaType.APPLICATION_JSON).build();
-        }
-        return Response.ok(student).build();
-    }
-    @Path("update/email/{id}")
-    @PUT
-    public Response updateEmail(@PathParam("id") Long id, @QueryParam("email") String email){
-        Student student = studentService.updateEmail(id, email);
-        if(student == null){
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Student with id: "+ id + " could not be found")
-                    .type(MediaType.APPLICATION_JSON).build();
-        }
-        return Response.ok(student).build();
-    }
-    @Path("update/phone/{id}")
-    @PUT
-    public Response updatePhone(@PathParam("id") Long id, @QueryParam("phone") String phone){
-        Student student = studentService.updatePhone(id, phone);
-        if(student == null){
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Student with id: "+ id + " could not be found")
-                    .type(MediaType.APPLICATION_JSON).build();
-        }
+    public Response updateStudent(Student student){
+        studentService.updateStudent(student);
         return Response.ok(student).build();
     }
 

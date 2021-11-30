@@ -1,6 +1,7 @@
 package se.iths.service;
 
 import se.iths.entity.Student;
+import se.iths.entity.Subject;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,33 +35,13 @@ public class StudentService {
         return Response.ok().build();
     }
 
-    public Student updateFirstName(Long id, String first){
-        Student student = entityManager.find(Student.class, id);
-        student.setFirstName(first);
-        return student;
-    }
-
-    public Student updateLastName(Long id, String last){
-        Student student = entityManager.find(Student.class, id);
-        student.setLastName(last);
-        return student;
-    }
-
-    public Student updatePhone(Long id, String number){
-        Student student = entityManager.find(Student.class, id);
-        student.setPhoneNumber(number);
-        return student;
-    }
-
-    public Student updateEmail(Long id, String mail){
-        Student student = entityManager.find(Student.class, id);
-        student.setEmail(mail);
-        return student;
-    }
-
     public List getStudentByLastName(String lastName) {
         Query query = entityManager.createQuery("SELECT i from Student i where i.lastName = :lastName");
         query.setParameter("lastName", lastName);
         return query.getResultList();
+    }
+
+    public void updateStudent(Student student) {
+        entityManager.merge(student);
     }
 }
