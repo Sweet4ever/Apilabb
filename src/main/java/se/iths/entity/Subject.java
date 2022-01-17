@@ -24,6 +24,11 @@ public class Subject {
         this.students = students;
     }
 
+    public void addStudent(Student student) {
+        this.students.add(student);
+        student.getSubjects().add(this);
+    }
+
     public Subject() {
     }
 

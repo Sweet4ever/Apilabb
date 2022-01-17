@@ -31,6 +31,11 @@ public class Student {
     }
     public Student(){}
 
+    public void addSubject(Subject subject) {
+        this.subjects.add(subject);
+        subject.getStudents().add(this);
+    }
+
     public List<Subject> getSubjects(){
         return subjects;
     }

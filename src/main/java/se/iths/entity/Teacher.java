@@ -24,6 +24,11 @@ public class Teacher {
     public Teacher() {
     }
 
+    public void addSubject(Subject subject) {
+        this.subjects.add(subject);
+        subject.setTeacher(this);
+    }
+
     public String getName() {
         return name;
     }
