@@ -30,11 +30,10 @@ public class SubjectRest {
         return Response.ok(subjectService.getAll()).build();
     }
 
-    @Path("")
+    @Path("/giveStudentSubject/{studentId}/{subjectId}")
     @PUT
-    public Response updateSubject(Subject subject){
-        subjectService.updateSubject(subject);
-        return Response.ok(subject).build();
+    public Response updateSubject(@PathParam("studentId") Long Stid,@PathParam("subjectId") Long Suid){
+        return Response.ok(subjectService.addStudentToSubject(Suid, Stid)).build();
     }
 
     @Path("{id}")

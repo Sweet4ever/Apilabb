@@ -20,10 +20,11 @@ public class Student {
     @NotEmpty
     private String email;
     private String phoneNumber = "None";
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     private List<Subject> subjects = new ArrayList<>();
 
     public Student(String firstName, String lastName, String email, List<Subject> subjects){
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

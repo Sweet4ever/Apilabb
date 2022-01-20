@@ -13,12 +13,13 @@ public class Subject {
     private Long id;
     @NotEmpty
     private String name;
-    @ManyToMany(mappedBy = "subjects", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "subjects", cascade = CascadeType.MERGE)
     private List<Student> students = new ArrayList<>();
     @ManyToOne
     private Teacher teacher;
 
     public Subject(String name, Teacher teacher, List<Student> students) {
+        this.id = id;
         this.name = name;
         this.teacher = teacher;
         this.students = students;

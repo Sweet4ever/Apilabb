@@ -17,6 +17,7 @@ public class Teacher {
     private List<Subject> subjects = new ArrayList<>();
 
     public Teacher(String name, List<Subject> subjects) {
+        this.id = id;
         this.name = name;
         this.subjects = subjects;
     }

@@ -1,7 +1,9 @@
 package se.iths.service;
 
+import se.iths.entity.Student;
 import se.iths.entity.Subject;
 import se.iths.entity.Teacher;
+import se.iths.service.StudentService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,6 +16,8 @@ public class SubjectService {
     @PersistenceContext
     EntityManager entityManager;
 
+    StudentService studentService;
+
     public Subject createSubject(Subject subject){
         entityManager.persist(subject);
         return subject;
@@ -21,6 +25,14 @@ public class SubjectService {
 
     public void updateSubject(Subject subject) {
         entityManager.merge(subject);
+    }
+
+    public Subject addStudentToSubject(Long subjectId, Long studentId) {
+        Subject foundSubject = entityManager.find(Subject.class ,subjectId);
+        Student foundStudent = entityManager.find(Student.class, studentId);
+        foundSubject.addStudent(foundStudent);
+        entityManager.persist(foundSubject);
+        return foundSubject;
     }
 
     public List<Subject> getSubjectData(Long id) {
