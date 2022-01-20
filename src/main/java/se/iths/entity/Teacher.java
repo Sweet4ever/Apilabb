@@ -1,5 +1,6 @@
 package se.iths.entity;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
@@ -13,11 +14,12 @@ public class Teacher {
     private Long id;
     @NotEmpty
     private String name;
+
+    @JsonbTransient
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
     private List<Subject> subjects = new ArrayList<>();
 
     public Teacher(String name, List<Subject> subjects) {
-        this.id = id;
         this.name = name;
         this.subjects = subjects;
     }

@@ -19,7 +19,6 @@ public class Subject {
     private Teacher teacher;
 
     public Subject(String name, Teacher teacher, List<Student> students) {
-        this.id = id;
         this.name = name;
         this.teacher = teacher;
         this.students = students;
