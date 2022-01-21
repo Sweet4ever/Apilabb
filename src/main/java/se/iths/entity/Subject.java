@@ -18,10 +18,8 @@ public class Subject {
     @ManyToOne
     private Teacher teacher;
 
-    public Subject(String name, Teacher teacher, List<Student> students) {
+    public Subject(String name) {
         this.name = name;
-        this.teacher = teacher;
-        this.students = students;
     }
 
     public void addStudent(Student student) {
@@ -45,7 +43,7 @@ public class Subject {
     }
 
     public void setTeacher(Teacher teacher) {
-        teacher = teacher;
+        this.teacher = teacher;
     }
 
     public List<Student> getStudents() {

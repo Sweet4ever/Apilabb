@@ -25,11 +25,10 @@ public class Student {
     @ManyToMany(cascade = CascadeType.MERGE)
     private List<Subject> subjects = new ArrayList<>();
 
-    public Student(String firstName, String lastName, String email, List<Subject> subjects){
+    public Student(String firstName, String lastName, String email){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.subjects = subjects;
     }
     public Student(){}
 

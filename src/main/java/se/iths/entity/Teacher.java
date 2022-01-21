@@ -19,9 +19,8 @@ public class Teacher {
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
     private List<Subject> subjects = new ArrayList<>();
 
-    public Teacher(String name, List<Subject> subjects) {
+    public Teacher(String name) {
         this.name = name;
-        this.subjects = subjects;
     }
 
     public Teacher() {
